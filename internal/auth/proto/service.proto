@@ -1,0 +1,5 @@
+syntax = "proto3";
+
+package auth.proto;
+
+option go_package = "internal/auth/proto;proto";

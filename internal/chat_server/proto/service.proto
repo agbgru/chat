@@ -1,0 +1,5 @@
+syntax = "proto3";
+
+package chat_server.proto;
+
+option go_package = "internal/chat_server/proto;proto";
