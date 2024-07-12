@@ -7,10 +7,9 @@ import (
 	"net"
 	"time"
 
+	desc "github.com/agbgru/chat/pkg/chat_v1"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
-
-	desc "github.com/agbgru/chat/pkg/chat_v1"
 )
 
 const grpcPort = 50051
@@ -24,7 +23,7 @@ func (s *server) CreateChat(ctx context.Context, req *desc.CreateChatRequest,
 ) (*desc.CreateChatResponse, error) {
 	_ = ctx
 
-	fmt.Printf("CreateChat called with usernames: %v\n", req.Usernames)
+	log.Printf("CreateChat called with usernames: %v\n", req.Usernames)
 
 	return &desc.CreateChatResponse{Id: 1}, nil
 }
@@ -34,7 +33,7 @@ func (s *server) DeleteChat(ctx context.Context, req *desc.DeleteChatRequest,
 ) (*desc.DeleteChatResponse, error) {
 	_ = ctx
 
-	fmt.Printf("DeleteChat called with id: %v\n", req.Id)
+	log.Printf("DeleteChat called with id: %v\n", req.Id)
 
 	return &desc.DeleteChatResponse{}, nil
 }
@@ -44,7 +43,7 @@ func (s *server) SendMessage(ctx context.Context, req *desc.SendMessageRequest,
 ) (*desc.SendMessageResponse, error) {
 	_ = ctx
 
-	fmt.Printf("SendMessage called from user %s with text %s and time %s",
+	log.Printf("SendMessage called from user %s with text %s and time %s",
 		req.From, req.Text, req.Timestamp.AsTime().Format(time.DateTime))
 
 	return &desc.SendMessageResponse{}, nil
