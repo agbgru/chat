@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net"
+	"time"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
@@ -18,21 +19,34 @@ type server struct {
 	desc.UnimplementedChatServer
 }
 
-// CreateChat ...
+// CreateChat creates new chat for users from request.
 func (s *server) CreateChat(ctx context.Context, req *desc.CreateChatRequest,
 ) (*desc.CreateChatResponse, error) {
+	_ = ctx
+
+	fmt.Printf("CreateChat called with usernames: %v\n", req.Usernames)
+
 	return &desc.CreateChatResponse{Id: 1}, nil
 }
 
-// DeleteChat ...
+// DeleteChat deletes chat with id from request.
 func (s *server) DeleteChat(ctx context.Context, req *desc.DeleteChatRequest,
 ) (*desc.DeleteChatResponse, error) {
+	_ = ctx
+
+	fmt.Printf("DeleteChat called with id: %v\n", req.Id)
+
 	return &desc.DeleteChatResponse{}, nil
 }
 
-// SendMessage ...
+// SendMessage sends message to chat.
 func (s *server) SendMessage(ctx context.Context, req *desc.SendMessageRequest,
 ) (*desc.SendMessageResponse, error) {
+	_ = ctx
+
+	fmt.Printf("SendMessage called from user %s with text %s and time %s",
+		req.From, req.Text, req.Timestamp.AsTime().Format(time.DateTime))
+
 	return &desc.SendMessageResponse{}, nil
 }
 
