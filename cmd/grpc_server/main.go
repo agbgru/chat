@@ -7,9 +7,10 @@ import (
 	"net"
 	"time"
 
-	desc "github.com/agbgru/chat/pkg/chat_v1"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
+
+	desc "github.com/agbgru/chat/pkg/chat_v1"
 )
 
 const grpcPort = 50051

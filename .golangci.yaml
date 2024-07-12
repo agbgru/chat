@@ -35,6 +35,11 @@ linters-settings:
   goconst:
     min-len: 2
     min-occurrences: 2
+  gci:
+    sections:
+      - standard
+      - default
+      - prefix(github.com/agbgru/chat/)
 
 linters:
   enable-all: true
